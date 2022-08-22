@@ -1,0 +1,31 @@
+{
+  "name": "com.nomnom.integrated-rust",
+  "version": "0.0.1",
+  "displayName": "Integrated Rust",
+  "description": "Allows for handling and compiling cargo projects directly within the Unity Editor.",
+  "unity": "2021.3",
+  "unityRelease": "2f1",
+  "licensesUrl": "https://choosealicense.com/licenses/mit/",
+  "dependencies": {},
+  "devDependencies": {},
+  "samples": [
+    {
+      "displayName": "Basic Rust Package",
+      "description": "A basic rust package example that simply moves cubes around and changes their color.",
+      "path": "Samples~/BasicRustPackage"
+    }
+  ],
+  "keywords": [
+    "cargo",
+    "rust",
+    "integration",
+    "tool",
+    "editor"
+  ],
+  "author": {
+    "name": "Andrew Burke",
+    "email": "",
+    "url": ""
+  },
+  "type": "library"
+}

@@ -1,0 +1,18 @@
+{
+    "name": "com.nomnom.integrated-rust.Editor",
+    "rootNamespace": "Nomnom.IntegratedRust",
+    "references": [
+        "GUID:4dffeefd2d15ed844a6b57f80a8af11d"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
