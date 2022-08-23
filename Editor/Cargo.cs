@@ -15,7 +15,7 @@ namespace Nomnom.IntegratedRust.Editor {
     private static readonly Regex _warningRegex = new Regex("(?s)(warning+:.*?)(?:\r*\n){2}");
     private static readonly Regex _errorRegex = new Regex("(?s)(error.*?)(?:\r*\n){2}");
     
-    [MenuItem("Assets/Create/Nomnom/Cargo Project")]
+    [MenuItem("Assets/Create/Nomnom/Rust/Cargo Project")]
     private static void CreateCargoProject() {
       string path = GetPath();
       Debug.Assert(!string.IsNullOrEmpty(path));
@@ -23,7 +23,7 @@ namespace Nomnom.IntegratedRust.Editor {
       Create(path);
     }
 
-    [MenuItem("Assets/Create/Nomnom/Cargo Project", true)]
+    [MenuItem("Assets/Create/Nomnom/Rust/Cargo Project", true)]
     private static bool CreateCargoProjectValidation() {
       string path = GetPath();
 
@@ -97,13 +97,19 @@ namespace Nomnom.IntegratedRust.Editor {
       process.StartInfo = startInfo;
       process.Start();
       process.WaitForExit();
+
+      string name = Path.GetFileNameWithoutExtension(dir);
+      string tomlPath = $"{dir}\\Cargo.toml";
+      string content = File.ReadAllText(tomlPath);
+      content += "\n[lib]\ncrate-type = [\"cdylib\"]";
+      File.WriteAllText(tomlPath, content);
       
       AssetDatabase.Refresh();
       
       CargoAsset cargoAsset = ScriptableObject.CreateInstance<CargoAsset>();
-      string name = Path.GetFileNameWithoutExtension(dir);
       cargoAsset.BuildDir = $@"..\Library\Rust\{name}";
       cargoAsset.Name = name;
+
       AssetDatabase.CreateAsset(cargoAsset, $"{assetPath}/project.asset");
     }
 
@@ -190,6 +196,11 @@ namespace Nomnom.IntegratedRust.Editor {
 
         bool foundToml = false;
         bool foundCargoAsset = false;
+
+        if (!parent.Exists) {
+          continue;
+        }
+        
         foreach (FileInfo file in parent.EnumerateFiles()) {
           switch (file.Extension) {
             case ".toml": foundToml = true;

@@ -19,7 +19,7 @@ This is an experimental package that allows for you to create, manage, and compi
 ![Cargo project example](~Readme/project.png)
 
 1. Create a new folder in the `Project` window with a name that follows typical cargo guidelines
-2. Right-click the folder and create a new cargo project via `Create/Nomnom/Cargo Project`
+2. Right-click the folder and create a new cargo project via `Create/Nomnom/Rust/Cargo Project`
 
 # The Cargo Scriptable Object
 

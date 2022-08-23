@@ -64,7 +64,16 @@ namespace Nomnom.IntegratedRust.Editor {
         }
 
         foreach (string cargoProject in cargoProjects) {
+          if (string.IsNullOrEmpty(cargoProject)) {
+            continue;
+          }
+          
           DirectoryInfo dir = new DirectoryInfo(cargoProject);
+
+          if (!dir.Exists) {
+            continue;
+          }
+          
           // find asset
           foreach (FileInfo file in dir.EnumerateFiles()) {
             if (file.Extension == ".asset") {
