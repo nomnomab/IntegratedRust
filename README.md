@@ -70,3 +70,5 @@ private void Start() {
     }
 }
 ```
+
+After this, add the `NativePluginLoader` component to the scene and you now have the bindings set up.

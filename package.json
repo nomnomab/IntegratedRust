@@ -1,6 +1,6 @@
 {
   "name": "com.nomnom.integrated-rust",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "displayName": "Integrated Rust",
   "description": "Allows for handling and compiling cargo projects directly within the Unity Editor.",
   "unity": "2021.3",
