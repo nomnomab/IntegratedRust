@@ -139,9 +139,7 @@ namespace fts {
           if (pluginAttr == null) {
             continue;
           }
-          
-          Debug.Log($"Type found: {type}");
-          
+
           string pluginName = pluginAttr.pluginName;
           if (!_loadedPlugins.TryGetValue(pluginName, out IntPtr pluginHandle)) {
             string pluginPath = _path + pluginName + EXT;
