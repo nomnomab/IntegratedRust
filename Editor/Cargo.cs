@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using fts;
 using UnityEditor;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -167,7 +168,7 @@ namespace Nomnom.IntegratedRust.Editor {
           if (!Directory.Exists(outputPath)) {
             Directory.CreateDirectory(outputPath);
           }
-          
+
           File.Copy(dllStartDir, dllEndDir, true);
           AssetDatabase.Refresh();
           

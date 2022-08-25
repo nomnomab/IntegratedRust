@@ -72,3 +72,5 @@ private void Start() {
 ```
 
 After this, add the `NativePluginLoader` component to the scene and you now have the bindings set up.
+
+> To guarantee that the DLL doesn't stay loaded under normal circumstances, make sure your DLL is built outside of the `Assets` folder. The default location is `[Project Name]\Plugins\`.

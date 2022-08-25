@@ -8,6 +8,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using UnityEngine;
@@ -40,6 +41,8 @@ namespace fts {
   [Serializable]
   [DefaultExecutionOrder(-999999)]
   public class NativePluginLoader : MonoBehaviour, ISerializationCallbackReceiver {
+    [SerializeField] private string _pluginsDir = "..\\Plugins\\";
+    
     public static event Action onLoaded;
 
     // Constants
@@ -95,7 +98,8 @@ namespace fts {
       _singleton = this;
       DontDestroyOnLoad(gameObject);
 
-      _path = Application.dataPath + "/Plugins/";
+      // _path = Application.dataPath + "/Plugins/";
+      _path = Path.Combine(Application.dataPath, _pluginsDir);
 
       LoadAll();
     }
@@ -118,6 +122,11 @@ namespace fts {
       
       foreach (KeyValuePair<string, IntPtr> kvp in _loadedPlugins) {
         bool result = SystemLibrary.FreeLibrary(kvp.Value);
+        if (result) {
+          continue;
+        }
+        
+        Debug.LogWarning($"{kvp.Key} was not unloaded successfully.");
       }
 
       _loadedPlugins.Clear();

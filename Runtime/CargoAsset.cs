@@ -7,7 +7,7 @@ namespace Nomnom.IntegratedRust {
     public bool AutoRecompile = true;
     [Tooltip("A path relative to Assets/")]
     public string BuildDir;
-    public string DllOutputDir = ".\\Plugins";
+    public string DllOutputDir = "..\\Plugins";
     public string CustomBuildArgs;
   }
 }
